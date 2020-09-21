@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <title>EFS 保护隐私的、可审计的区块链存储</title>
+	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse" role="navigation">
+	<div class="container-fluid">
+	    <div class="navbar-header">
+		<a class="navbar-brand" href="#">操作界面</a>
+	    </div>
+	    <div>
+		<ul class="nav navbar-nav">
+		    <li class="active"><a href="#">项目介绍</a></li>
+		    <li><a href="#">操作手册</a></li>
+		    <li><a href="#">联系我们</a></li>
+		</ul>
+	    </div>
+	</div>
+</nav>
+<div class="container" style="background-image:url(background.jpg);height:1000px">
+   <div class="row" >
+      <div class="col-xs-6 col-sm-3">
+         	
+		
+		
+
+      </div>
+      <div class="col-xs-6 col-sm-6">
+	<!-- 提供额外的视觉效果，标识一组按钮中的原始动作 -->
+	<button type="button" class="btn btn-primary">远程认证</button>
+	<!-- 表示一个成功的或积极的动作 -->
+	<button type="button" class="btn btn-success">生成秘钥</button>
+	<!-- 信息警告消息的上下文按钮 -->
+	<button type="button" class="btn btn-info">加密文件</button>
+	<!-- 表示应谨慎采取的动作 -->
+	<button type="button" class="btn btn-warning">上传文件</button>
+	<!-- 表示一个危险的或潜在的负面动作 -->
+	<button type="button" class="btn btn-danger">下载文件</button>
+        <!-- Panel -->
+         <div class="panel panel-primary" >
+		<div class="panel-heading" >
+			<h3 class="panel-title">控制台</h3>
+			</div>
+			<div class="panel-body" style="height:500px">
+				Enclave初始化完成。</br>
+				远程认证进行中…… </br>
+			    文件秘钥生成中……</br>
+	   			--Concatenate Report and username</br>
+                memcpy Report</br>
+                memcpy username</br>
+                --128bit cmac</br>
+                sgx_rijndael128_cmac_msg(NULL, p_src, 2*sizeof(report), p_mac);</br>
+                --key copy</br>
+	            memcpy(&key_128bit, cmac, sizeof(sgx_key_128bit_t));</br>
+		        128bit秘钥文件已保存至./key.pem</br>
+	            加密文件……</br>
+	            SGX_FILE* input_file = sgx_fopen(_input_file, "r", &key_128bit)...</br>
+	            加密后的文件为:encrypted_example.txt</br>
+	            上传文件中……</br>
+	            上传完成！</br>
+	            收到审计结果，审核通过！</br>
+			</div>
+		</div>
+       </div>
+      <div class="col-xs-6 col-sm-3" >
+         
+      </div>
+     
+   </div>
+</div>
+
+
+</body>
+</html>
