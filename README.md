@@ -6,7 +6,7 @@
 
 ### 1. 复制zallDiskSDK文件夹到fabric-samples目录
 
-sudo cp -r zallDiskSdk/ $GOPATH/src/github.com/hyperledger/fabric/scripts/fabric-samples/zallDiskSDK/
+`sudo cp -r zallDiskSdk/ $GOPATH/src/github.com/hyperledger/fabric/scripts/fabric-samples/zallDiskSDK/`
 
 cd $GOPATH/src/github.com/hyperledger/fabric/scripts/fabric-samples/zallDiskSDK/
 
