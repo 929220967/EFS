@@ -14,7 +14,7 @@
 
 `sudo cp -r zallDiskSdk/Chaincode/zallDisk $GOPATH/src/github.com/hyperledger/fabric/scripts/fabric-samples/Chaincode`
 
-###3. 启动fabric网络
+### 3. 启动fabric网络
 
 `cd /GOPATH/src/github.com/hyperledger/fabric/scripts/fabric-samples/zallDiskSDK/`
 
@@ -34,23 +34,23 @@
 
 `node httpserver.js`
 
-* 请求处理过程：
+- 请求处理过程：
 
-1)接收加密文件，存储到./server/upload文件夹
+    - 接收加密文件，存储到./server/upload文件夹
 
-2)启动Enclave，解密文件，并执行审计规则。
+    - 启动Enclave，解密文件，并执行审计规则。
 
-   a) 审计通过，会返回"Pass Audit"消息给客户端，执行步骤3)；
+       - 审计通过，会返回"Pass Audit"消息给客户端
    
-   b) 审计未通过，会返回“Fail Audit”消息给客户端。
+       - 审计未通过，会返回“Fail Audit”消息给客户端。
    
-3)调用ipfsApi.js，add文件到IPFS网络，生成hash。
+    - 调用ipfsApi.js，add文件到IPFS网络，生成hash。
 
-4)调用chaincode.js，调用链码。
+    - 调用chaincode.js，调用链码。
 
-   a) 如果用户存在，则上链：hash, filename, 用户名
+       - 如果用户存在，则上链：hash, filename, 用户名
    
-   b) 如果用户不存在，先创建用户上链：用户名，再上链：hash, filename, 用户名 *
+       - 如果用户不存在，先创建用户上链：用户名，再上链：hash, filename, 用户名 *
    
 ### 8.SGX执行解密和审计
 
