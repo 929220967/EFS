@@ -69,43 +69,58 @@
 # 附：依赖环境安装
 ## IPFS
 ### 一.ipfs安装
-#### 1.下载go-ipfs : https://dist.ipfs.io/#go-ipfs(需要翻墙)
+#### 1.下载go-ipfs 
+
+https://dist.ipfs.io/#go-ipfs(需要翻墙)
 
 如果网络没翻墙去github下载 地址https://github.com/ipfs/go-ipfs/releases
 
 #### 2.获取安装包之后
 
-解压 tar xvfz go-ipfs.tar.gz
+`tar xvfz go-ipfs.tar.gz`
 
-切换到cd go-ipfs
+`cd go-ipfs`
 
- ./install.sh 执行该脚本会自动安装成功
+ `./install.sh` 
  
-#### 3.执行ipfs init  会生成提示，界面有一串哈希地址，通过 ipfs cat 该哈希地址出现界面安装成功。
+`ipfs init`  
+
+会生成提示，界面有一串哈希地址，通过 
+
+`ipfs cat 哈希地址` 
+
+出现界面安装成功。
 
 
 ### 二.创建秘钥（私人网络共享时需要，由于只有一台主机，只能单机测试）
 
-#### 1.下载秘钥工具（也可以通过go get 安装，go get -u github.com/Kubuxu/go-ipfs-swarm-key-gen/ipfs-swarm-key-gen，但是go get经常失败）
+#### 1.下载秘钥工具
 
 `git clone https://github.com/Kubuxu/go-ipfs-swarm-key-gen.git`
 
-#### 2.编译该工具 生成执行文件
+（也可以通过go get 安装，但是go get经常失败）
+
+`go get -u github.com/Kubuxu/go-ipfs-swarm-key-gen/ipfs-swarm-key-gen`
+
+#### 2.编译
 
 `go build -o ipfs-swarm-key-gen go-ipfs-swarm-key-gen/ipfs-swarm-key-gen/main.go`
 
-#### 3. 执行该可执行文件生成秘钥--源码就是随机生成一个32位的随机数，然后用 hex.Encode 成一个 64 位 16进制数
+#### 3. 生成秘钥
 
 `./ipfs-swarm-key-gen > swarm.key`  
 
-#### 4.将生成的秘钥复制到多主机的.ipfs（ipfs的）本地目录。
+源码就是随机生成一个32位的随机数，然后用 hex.Encode 成一个 64 位 16进制数
 
+#### 4.复制秘钥
+
+将生成的秘钥复制到多主机的.ipfs（ipfs的）本地目录。
 
 ### 三.配置共享网络，假设两台主机
 
 #### 1.删除ipfs默认的网关节点
 
-  ipfs bootstrap rm all
+`ipfs bootstrap rm all`
   
 #### 2.修改第一台主机的./ipfs的ip地址
 
@@ -132,9 +147,11 @@
   ```
   
 #### 3.查看第一台主机ipfs节点的ID值。
+
 `ipfs id`
 
 #### 4.启动第一台ipfs的网络
+
 `ipfs daemon`
 
 #### 5.添加第一台节点的地址到另一台节点的bootstrap列表中。
@@ -163,19 +180,19 @@
 
  安装运行WebUI：
  
-   `git clone https://github.com/ipfs/webui`
+`git clone https://github.com/ipfs/webui`
         
-    `cd webui`
+ `cd webui`
         
-   `npm install`
+`npm install`
         
-  Runs server on port 3000.
+ Runs server on port 3000.
     
-   `npm start`
+`npm start`
         
 ### 六. 访问WebUI：
 
-     http://localhost:3000
+http://localhost:3000
 
 
 
@@ -185,7 +202,7 @@
 
 ### 一. 安装golang：
 
-#### 1.官网下载golang包，将包上传到linux服务器
+#### 1.官网下载golang包
 
 #### 2.解压到 /usr/local 
 
@@ -209,8 +226,6 @@ export PATH=$PATH:$HOME/go/bin  //gopath可执行文件路径
 
 ```
 
-vim编辑器输入：wq保存，
-
 `source /etc/profile` 
 
 `go version`
@@ -218,9 +233,8 @@ vim编辑器输入：wq保存，
 
 ### 二.docker安装
 
-
-
 #### 1.安装必要的工具
+
 `yum install -y yum-utils device-mapper-persistent-data lvm2`
 
 #### 2.通过工具增加docker源
@@ -243,15 +257,13 @@ vim编辑器输入：wq保存，
 
 #### 6.把用户加入docker组，非root用户下运行docker，不需要执行sudo
 
-##### step 1: 创建docker用户组
-
 `sudo groupadd docker`
-
-##### step 2:将当前用户添加到docker用户组
 
 `sudo usermod -aG docker $USER`
 
-#### 7.重启docker服务 sudo service docker restart
+#### 7.重启docker服务
+
+`sudo service docker restart`
 
 
 ### 三.配置docker-compose
@@ -262,9 +274,11 @@ vim编辑器输入：wq保存，
 
 （没安装curl，输入命令行yum install -y curl安装）
 
-#### 2.切换到安装包的界面，会有一个docker-compose的文件，可以输入ls查看。
+#### 2.切换到安装包的界面
 
 `cd /usr/local/bin/`
+
+会有一个docker-compose的文件，可以输入ls查看。
 
 #### 3.给该文件增加权限
 
@@ -302,24 +316,15 @@ vim编辑器输入：wq保存，
 
 `sudo ./bootstrap.sh`          
 
-此处说明，跟网络关系很大，二进制文件如果下载失败，去github上下载对应版本，源网址网站我今年尝试已经关闭了。
+此处说明，跟网络关系很大，二进制文件如果下载失败，去github上下载对应版本，源网址网站我今年尝试已经关闭了。如果上一步操作下载二进制文件太慢或者没速度，可以直接对源码进行编译,执行以下命令(前提是以上相关路径配置没有错误)：如果失败，去github上下载对应二进制文件放到此文件夹下，要不然网络无法启动，因为缺少configtxgen  configtxlator  cryptogen  这些工具. 如果文件夹内有如下文件的话说明编译成功:configtxgen  configtxlator  cryptogen  discover  idemixgen  orderer  peer
 
-如果上一步操作下载二进制文件太慢或者没速度，可以直接对源码进行编译,执行以下命令(前提是以上相关路径配置没有错误)：
-
-##### 首先进入fabric文件夹
 
 `cd ~/go/src/github.com/hyperledger/fabric/`
 
-##### 编译源码(这一步看运气)
-
 `make release`     
-
-##### 查看生成的文件
 
 `cd release/linux-amd64/bin`     
 
---如果失败，去github上下载对应二进制文件放到此文件夹下，要不然网络无法启动，因为缺少configtxgen  configtxlator  cryptogen  这些工具. 如果文件夹内有如下文件的话说明编译成功:
-configtxgen  configtxlator  cryptogen  discover  idemixgen  orderer  peer
 
 ##### 环境变量生效
 
@@ -357,21 +362,23 @@ configtxgen  configtxlator  cryptogen  discover  idemixgen  orderer  peer
 
 `cd $GOPATH/src/github.com/hyperledger/fabric/scripts/fabric-samples/basic-network`
 
-#### 2在hyperledger下创建sdk-node-study目录（你自己想要的任何目录）
+#### 2.自建目录
 
-#### 3.将第一步basic-network的内容复制到该目录下
+在hyperledger下创建sdk-node-study目录（你自己想要的任何目录）
 
-#### 4.该目录下的文件创建会包括 一个orderer组织  一个peer节点
+#### 3.复制
 
-#### 5.在该文件下创建链码目录
+将第一步basic-network的内容复制到该目录下。该目录下的文件创建会包括 一个orderer组织  一个peer节点
+
+#### 4.在该文件下创建链码目录
 
 `mkdir chaincode`
 
- `cp -r $GOPATH/src/github.com/hyperledger/fabric/scripts/fabric-samples/chaincode/fabcar  ./chaincode`   复制已有链码到创建的链码目录，
+ `cp -r $GOPATH/src/github.com/hyperledger/fabric/scripts/fabric-samples/chaincode/fabcar  ./chaincode`   
  
-如果要自己写链码，可以自己把链码放到./chaincode下，以为启动容器的时候会自动识别该路径。
+ 复制已有链码到创建的链码目录，如果要自己写链码，可以自己把链码放到./chaincode下，以为启动容器的时候会自动识别该路径。
 
-#### 6.进入复制过来的basic-network目录
+#### 5.进入复制过来的basic-network目录
 
 #### 7.生成证书
 
