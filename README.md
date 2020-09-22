@@ -1,16 +1,16 @@
 # EFS
 
-#运行项目
+# 运行项目
 
-##服务端
+## 服务端
 
-###1. 复制zallDiskSDK文件夹到fabric-samples目录
+### 1. 复制zallDiskSDK文件夹到fabric-samples目录
 
 sudo cp -r zallDiskSdk/ $GOPATH/src/github.com/hyperledger/fabric/scripts/fabric-samples/zallDiskSDK/
 
 cd $GOPATH/src/github.com/hyperledger/fabric/scripts/fabric-samples/zallDiskSDK/
 
-###2. 复制Chaincode的zallDisk文件夹到fabric-samples/Chaincode目录
+### 2. 复制Chaincode的zallDisk文件夹到fabric-samples/Chaincode目录
 
 sudo cp -r zallDiskSdk/Chaincode/zallDisk $GOPATH/src/github.com/hyperledger/fabric/scripts/fabric-samples/Chaincode
 
@@ -20,15 +20,15 @@ cd /GOPATH/src/github.com/hyperledger/fabric/scripts/fabric-samples/zallDiskSDK/
 
 ./startFabric.sh
 
-###4. 启动IPFS
+### 4. 启动IPFS
 
 ipfs daemon
 
-###5. 设置sgx环境变量
+### 5. 设置sgx环境变量
 
 source /opt/intel/sgxsdk/environment 
 
-###6. 启动httpserver.js
+### 6. 启动httpserver.js
 
 cd ./server
 
@@ -52,7 +52,7 @@ node httpserver.js
    
    b) 如果用户不存在，先创建用户上链：用户名，再上链：hash, filename, 用户名
    
-###8.SGX执行解密和审计
+### 8.SGX执行解密和审计
 
 cd sgx_protected_file/
 
