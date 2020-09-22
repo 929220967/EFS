@@ -131,45 +131,51 @@
   },
   ```
   
-#### 3.执行ipfs id查看第一台主机ipfs节点的ID值。
+#### 3.查看第一台主机ipfs节点的ID值。
+`ipfs id`
 
-#### 4.ipfs daemon 启动第一台ipfs的网络
+#### 4.启动第一台ipfs的网络
+`ipfs daemon`
 
 #### 5.添加第一台节点的地址到另一台节点的bootstrap列表中。
 
 `ipfs bootstrap add /ip4/被添加节点的ip地址/tcp/4001/ipfs/被添加节点的ID值`
 
-#### 6.  ipfs  swarm peers 可以查看ipfs网络已经加入的节点。
+#### 6.可以查看ipfs网络已经加入的节点。
 
+`ipfs  swarm peers`
 
 ### 四.测试
 
-#### 1.第一台机器  ipfs add 上传的文件
+#### 1.第一台机器执行该命令会返回文件哈希，保存下来
 
-执行该命令会返回文件哈希，保存下来
+`ipfs add 上传的文件`
 
-#### 2.第二台机器 ipfs get 第一台机器的文件哈希
 
-在当前目录生成该文件，执行ipfs cat 文件哈希可以查看文件内容。
+#### 2.第二台机器  在当前目录生成该文件,可以查看文件内容
+
+`ipfs get 第一台机器的文件哈希` 
+
+`ipfs cat 文件哈希`
 
 
 ### 五. （有一个配套的ipfs界面）
 
  安装运行WebUI：
  
-        > `git clone https://github.com/ipfs/webui`
+   `git clone https://github.com/ipfs/webui`
         
-        > `cd webui`
+    `cd webui`
         
-        > `npm install`
+   `npm install`
         
   Runs server on port 3000.
     
-        > `npm start`
+   `npm start`
         
 ### 六. 访问WebUI：
 
-        http://localhost:3000
+     http://localhost:3000
 
 
 
@@ -203,10 +209,11 @@ export PATH=$PATH:$HOME/go/bin  //gopath可执行文件路径
 
 ```
 
-vim编辑器输入：wq保存，source /etc/profile，
+vim编辑器输入：wq保存，
 
-`source /etc/profile` 生效，通过go version查看是否成功
+`source /etc/profile` 
 
+`go version`
 
 
 ### 二.docker安装
@@ -230,7 +237,9 @@ vim编辑器输入：wq保存，source /etc/profile，
 
 `systemctl enable docker`
 
-#### 5.docker version是否成功
+#### 5.是否成功
+
+`docker version`
 
 #### 6.把用户加入docker组，非root用户下运行docker，不需要执行sudo
 
@@ -248,44 +257,52 @@ vim编辑器输入：wq保存，source /etc/profile，
 ### 三.配置docker-compose
 
 #### 1.输入命令行 
+
 `sudo curl -L "https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose`
 
 （没安装curl，输入命令行yum install -y curl安装）
 
-#### 2.输入命令行cd /usr/local/bin/切换到安装包的界面
+#### 2.切换到安装包的界面，会有一个docker-compose的文件，可以输入ls查看。
 
-会有一个docker-compose的文件，可以输入ls查看。
+`cd /usr/local/bin/`
 
-#### 3.命令行sudo chmod +x docker-compose给该文件增加权限
+#### 3.给该文件增加权限
 
-#### 4.命令行 docker-compose version 查看是否有输出对应版本。
+`sudo chmod +x docker-compose`
 
+#### 4. 查看是否有输出对应版本。
+
+`docker-compose version`
 
 ### 四.下载Fabric源码
 
 #### 1.创建文件夹 
+
 `mkdir -p go/src/github.com/hyperledger/`
 
 #### 2.进入 
+
 `cd go/src/github.com/hyperledger/`
 
 #### 3.clone
+
 `git clone "https://github.com/hyperledger/fabric.git"`
 
 #### 4.cd
+
 `cd fabric/`
 
 #### 5. 切换版本
+
 `git checkout release-1.4`     
 
 #### 6.cd scripts/
 
-#这一步会下载官方的例子以及所需要的Docker镜像
+这一步会下载官方的例子以及所需要的Docker镜像,下载是比较慢的，如果出现错误或者长时间没有速度只需要重新运行就可以了
 
-#下载是比较慢的，如果出现错误或者长时间没有速度只需要重新运行就可以了
+`sudo ./bootstrap.sh`          
 
-`sudo ./bootstrap.sh`          //此处说明，跟网络关系很大，二进制文件如果下载失败，去github上下载对应版本，源网址网站我今年尝试已经关闭了。
-
+此处说明，跟网络关系很大，二进制文件如果下载失败，去github上下载对应版本，源网址网站我今年尝试已经关闭了。
 
 如果上一步操作下载二进制文件太慢或者没速度，可以直接对源码进行编译,执行以下命令(前提是以上相关路径配置没有错误)：
 
@@ -293,23 +310,18 @@ vim编辑器输入：wq保存，source /etc/profile，
 
 `cd ~/go/src/github.com/hyperledger/fabric/`
 
-##### 编译源码
+##### 编译源码(这一步看运气)
 
 `make release`     
-
---这一步看运气
 
 ##### 查看生成的文件
 
 `cd release/linux-amd64/bin`     
 
---如果失败，去github上下载对应二进制文件放到此文件夹下，要不然网络无法启动，因为缺少configtxgen  configtxlator  cryptogen  这些工具
-
-如果文件夹内有如下文件的话说明编译成功
-
+--如果失败，去github上下载对应二进制文件放到此文件夹下，要不然网络无法启动，因为缺少configtxgen  configtxlator  cryptogen  这些工具. 如果文件夹内有如下文件的话说明编译成功:
 configtxgen  configtxlator  cryptogen  discover  idemixgen  orderer  peer
 
-##### 环境变量生效--1.4版本的例子这样写的，实际上我操作不需要，环境变量我一般添加在/etc/propfile
+##### 环境变量生效
 
 `vim ~/.profile`
 
@@ -341,7 +353,9 @@ configtxgen  configtxlator  cryptogen  discover  idemixgen  orderer  peer
 
 ### 快速启动1.4fabric进行环境部署
 
-#### 1.进入$GOPATH/src/github.com/hyperledger/fabric/scripts/fabric-samples/basic-network
+#### 1.进入
+
+`cd $GOPATH/src/github.com/hyperledger/fabric/scripts/fabric-samples/basic-network`
 
 #### 2在hyperledger下创建sdk-node-study目录（你自己想要的任何目录）
 
@@ -349,7 +363,9 @@ configtxgen  configtxlator  cryptogen  discover  idemixgen  orderer  peer
 
 #### 4.该目录下的文件创建会包括 一个orderer组织  一个peer节点
 
-#### 5.$ mkdir chaincode  -- 在该文件下创建链码目录
+#### 5.在该文件下创建链码目录
+
+`mkdir chaincode`
 
  `cp -r $GOPATH/src/github.com/hyperledger/fabric/scripts/fabric-samples/chaincode/fabcar  ./chaincode`   复制已有链码到创建的链码目录，
  
