@@ -20,7 +20,7 @@
 
 `$ cd /GOPATH/src/github.com/hyperledger/fabric/scripts/fabric-samples/zallDiskSDK/`
 
-`$ ./startFabric.sh`
+`$ sudo ./startFabric.sh`
 
 ### 4. 启动IPFS
 
@@ -34,7 +34,7 @@
 
 `$ cd ./server`
 
-`$ node httpserver.js`
+`$ sudo node httpserver.js`
 
 - 请求处理过程：
 
@@ -58,16 +58,16 @@
 
 `$ cd sgx_protected_file/`
 
-`$ make`
+`$ sudo make`
 
-`$ ./app decrypt -i encrypted_example.txt -u wuliangshun`
+`$ sudo ./app decrypt -i encrypted_example.txt -u wuliangshun`
 
 
 ## 客户端
 
 ### 1. 运行web server
 
-`$ node LocalWebServer.js`
+`$ sudo node LocalWebServer.js`
 
 ### 2. 进入操作界面
 
@@ -85,15 +85,15 @@
 
 `$ cd client/sgx-protected-file`
 
-`$ make`
+`$ sudo make`
 
-`$ ./app encrypt -i example.txt -u wuliangshun`
+`$ sudo ./app encrypt -i example.txt -u wuliangshun`
 
 ### 6.上传文件
 
 `$ cd ..`
 
-`$ node httpclient.js ../sgx-protected-file/encrypted_example.txt`
+`$ sudo node httpclient.js ../sgx-protected-file/encrypted_example.txt`
 
 
 
@@ -110,38 +110,38 @@ https://dist.ipfs.io/#go-ipfs(需要翻墙)
 
 #### 2.获取安装包之后
 
-`$ tar xvfz go-ipfs.tar.gz`
+`$ sudo tar xvfz go-ipfs.tar.gz`
 
 `$ cd go-ipfs`
 
- `$ ./install.sh` 
+`$ sudo ./install.sh` 
  
-`$ ipfs init`  
+`$ sudo ipfs init`  
 
 会生成提示，界面有一串哈希地址，通过 
 
-`$ ipfs cat $(FILE_HASH)` 
+`$ sudo ipfs cat $(FILE_HASH)` 
 
 出现界面安装成功。
 
 
-### 二.创建秘钥（私人网络共享时需要，由于只有一台主机，只能单机测试）
+### 二.创建秘钥
 
 #### 1.下载秘钥工具
 
-`$ git clone https://github.com/Kubuxu/go-ipfs-swarm-key-gen.git`
+`$ sudo git clone https://github.com/Kubuxu/go-ipfs-swarm-key-gen.git`
 
 （也可以通过go get 安装，但是go get经常失败）
 
-`$ go get -u github.com/Kubuxu/go-ipfs-swarm-key-gen/ipfs-swarm-key-gen`
+`$ sudo go get -u github.com/Kubuxu/go-ipfs-swarm-key-gen/ipfs-swarm-key-gen`
 
 #### 2.编译
 
-`$ go build -o ipfs-swarm-key-gen go-ipfs-swarm-key-gen/ipfs-swarm-key-gen/main.go`
+`$ sudo go build -o ipfs-swarm-key-gen go-ipfs-swarm-key-gen/ipfs-swarm-key-gen/main.go`
 
 #### 3. 生成秘钥
 
-`$ ./ipfs-swarm-key-gen > swarm.key`  
+`$ sudo ./ipfs-swarm-key-gen > swarm.key`  
 
 源码就是随机生成一个32位的随机数，然后用 hex.Encode 成一个 64 位 16进制数
 
