@@ -4,6 +4,7 @@
 
 ## 目录结构
 
+```
 .
 ├── Chaincode
 │   ├── zallDisk
@@ -57,7 +58,7 @@
 │           └── admin
 ├── startFabric.sh
 └── stopFabric.sh
-
+```
 
 ## 运行项目
 
