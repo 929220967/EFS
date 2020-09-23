@@ -2,6 +2,63 @@
 
 本项目基于fabric1.4+IPFS+Intel SGX，进行创新设计，提供一种保护客户隐私的、可审 计的区块链文件存储系统（简称为：EFS）。
 
+## 目录结构
+
+.
+├── Chaincode
+│   ├── zallDisk
+│   └── zallDisk.go
+├── client
+│   ├── Html
+│   │   ├── background.jpg
+│   │   ├── css
+│   │   │   ├── bootstrap.css
+│   │   │   ├── bootstrap.css.map
+│   │   │   ├── bootstrap-grid.css
+│   │   │   ├── bootstrap-grid.css.map
+│   │   │   ├── bootstrap-grid.min.css
+│   │   │   ├── bootstrap-grid.min.css.map
+│   │   │   ├── bootstrap.min.css
+│   │   │   ├── bootstrap.min.css.map
+│   │   │   ├── bootstrap-reboot.css
+│   │   │   ├── bootstrap-reboot.css.map
+│   │   │   ├── bootstrap-reboot.min.css
+│   │   │   └── bootstrap-reboot.min.css.map
+│   │   ├── index.html
+│   │   └── js
+│   │       ├── bootstrap.bundle.js
+│   │       ├── bootstrap.bundle.js.map
+│   │       ├── bootstrap.bundle.min.js
+│   │       ├── bootstrap.bundle.min.js.map
+│   │       ├── bootstrap.js
+│   │       ├── bootstrap.js.map
+│   │       ├── bootstrap.min.js
+│   │       └── bootstrap.min.js.map
+│   ├── httpclient.js
+│   ├── LocalWebServer.js
+│   ├── package-lock.json
+│   └── sgx_protect_file
+├── README.md
+├── server
+│   ├── bufferSplit.js
+│   ├── chaincode.js
+│   ├── httpserver.js
+│   ├── ipfsApi.js
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── sgx_protect_file
+│   ├── upload
+│   │   ├── demo.txt
+│   │   └── encrypted_example.txt
+│   └── wallet
+│       └── admin
+│           ├── 50903b380f64b25831d5d82978cabf58b6baf741102d62fef9f85d650b099c0b-priv
+│           ├── 50903b380f64b25831d5d82978cabf58b6baf741102d62fef9f85d650b099c0b-pub
+│           └── admin
+├── startFabric.sh
+└── stopFabric.sh
+
+
 ## 运行项目
 
 ## 服务端
@@ -33,6 +90,8 @@
 ### 6. 启动httpserver.js
 
 `$ cd ./server`
+
+`$ npm install`
 
 `$ sudo node httpserver.js`
 
@@ -66,6 +125,10 @@
 ## 客户端
 
 ### 1. 运行web server
+
+`$ cd client/`
+
+`$ npm install`
 
 `$ sudo node LocalWebServer.js`
 
